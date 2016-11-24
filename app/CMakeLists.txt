@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.4.1)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
 add_library(app-lib SHARED
         src/main/cpp/main.cpp)
 
@@ -10,7 +12,5 @@ target_include_directories(app-lib PRIVATE
         ${ANDROID_NDK}/sources/android/native_app_glue)
 
 add_subdirectory(../renderer ${CMAKE_CURRENT_BINARY_DIR}/renderer)
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 target_link_libraries(app-lib native-activity-glue renderer android log EGL GLESv1_CM)
